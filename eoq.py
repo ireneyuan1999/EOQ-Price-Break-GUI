@@ -1,7 +1,6 @@
 from eoq_gui import *
 from sympy import *
 import math
-import matplotlib.pyplot as plt
 
 def signals(self):
     self.buttonCalc.clicked.connect(self.calc)  # Connect buttonCalc clicked signal to the calc function
@@ -54,21 +53,3 @@ if __name__ == "__main__":  # A library or a stand-alone program
     ui.signals()  # Connect signals with the appropriate functions
     MainWindow.show()  # Show the main window
     sys.exit(app.exec_())  # If a termination signal is captured, exit the program.
-    
-period = [0, t0]
-while period[-1] < 100:
-    period.append(period[-1])
-    period.append(period[-1]+2)
-    
-# Create inventory list and append values
-inventory = [eoq, 0]
-while len(inventory) < len(period):
-    inventory.append(eoq)
-    inventory.append(0)
-
-# Plot inventory level graph
-plt.figure(figsize=(15,10))
-plt.plot(period,inventory)
-plt.xlabel("Time Periods")
-plt.ylabel("Inventory Level")
-plt.title("Economic Order Quantity")
